@@ -23,7 +23,13 @@ GRANT ALL PRIVILEGES ON ukelonn.* TO 'ukelonn_user'@'localhost';
 FLUSH PRIVILEGES;
 ```
 
-Importer skjemaet:
+Avslutt MySQL med:
+
+```sql
+EXIT;
+```
+
+Importer skjemaet fra *shell* (ikke inne i `mysql>`-prompten):
 
 ```bash
 mysql -u ukelonn_user -p < /path/to/ukelonn/schema.sql
@@ -41,6 +47,7 @@ Oppdater `config.json` med riktig MySQL-tilkobling og port:
     "password": "change_me",
     "database": "ukelonn"
   },
+  "host": "0.0.0.0",
   "port": 3000
 }
 ```

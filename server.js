@@ -178,6 +178,9 @@ app.post('/api/children/:id/payout', async (req, res) => {
   }
 });
 
-app.listen(config.port, () => {
-  console.log(`Ukelønn kjører på http://localhost:${config.port}`);
+const host = config.host || '0.0.0.0';
+
+app.listen(config.port, host, () => {
+  const displayHost = host === '0.0.0.0' ? 'localhost' : host;
+  console.log(`Ukelønn kjører på http://${displayHost}:${config.port}`);
 });
