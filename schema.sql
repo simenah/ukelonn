@@ -1,0 +1,39 @@
+CREATE DATABASE IF NOT EXISTS ukelonn CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE ukelonn;
+
+CREATE TABLE IF NOT EXISTS children (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(120) NOT NULL,
+  profile_url VARCHAR(500) NOT NULL,
+  total_cents INT NOT NULL DEFAULT 0,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS chores (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(200) NOT NULL,
+  value_cents INT NOT NULL,
+  frequency ENUM('daily', 'weekly') NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS child_chores (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  child_id INT NOT NULL,
+  chore_id INT NOT NULL,
+  active TINYINT(1) NOT NULL DEFAULT 1,
+  completed_at TIMESTAMP NULL,
+  CONSTRAINT fk_child_chores_child
+    FOREIGN KEY (child_id) REFERENCES children(id) ON DELETE CASCADE,
+  CONSTRAINT fk_child_chores_chore
+    FOREIGN KEY (chore_id) REFERENCES chores(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS payouts (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  child_id INT NOT NULL,
+  amount_cents INT NOT NULL,
+  paid_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_payouts_child
+    FOREIGN KEY (child_id) REFERENCES children(id) ON DELETE CASCADE
+);
