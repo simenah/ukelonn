@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ukelønn - Foreldremodus</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header>
+      <div class="logo">🪙 <span>Foreldremodus</span></div>
+      <nav class="nav-links">
+        <a href="index.html">Hjem</a>
+        <a href="kid.html">Barnemodus</a>
+      </nav>
+    </header>
+
+    <div class="fun-banner">Her kan foreldre legge til barn og oppgaver, og trigge ukelønn.</div>
+
+    <section class="card-grid">
+      <div class="card">
+        <h2>Legg til barn</h2>
+        <form id="child-form">
+          <div class="form-group">
+            <label for="child-name">Navn</label>
+            <input id="child-name" type="text" placeholder="F.eks. Emma" required>
+          </div>
+          <div class="form-group">
+            <label for="child-photo">Profilbilde URL</label>
+            <input id="child-photo" type="url" placeholder="https://..." required>
+          </div>
+          <button type="submit">Legg til barn</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>Legg til oppgave</h2>
+        <form id="chore-form">
+          <div class="form-group">
+            <label for="chore-title">Oppgavetekst</label>
+            <input id="chore-title" type="text" placeholder="Rydde rommet" required>
+          </div>
+          <div class="form-group">
+            <label for="chore-value">Verdi i kroner</label>
+            <input id="chore-value" type="number" min="1" value="10" required>
+          </div>
+          <div class="form-group">
+            <label for="chore-frequency">Frekvens</label>
+            <select id="chore-frequency">
+              <option value="daily">Daglig</option>
+              <option value="weekly">Ukentlig</option>
+            </select>
+          </div>
+          <button type="submit">Legg til oppgave</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top: 24px;">
+      <h2>Barn og saldo</h2>
+      <div id="parents-children" class="card-grid"></div>
+    </section>
+  </div>
+
+  <script src="parent.js"></script>
+</body>
+</html>
