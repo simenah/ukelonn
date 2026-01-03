@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ukelønn - Barnemodus</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell" id="kid-app">
+    <header>
+      <div class="logo">🎉 <span>Barnemodus</span></div>
+      <nav class="nav-links">
+        <a href="index.html">Hjem</a>
+        <a href="parent.html">Foreldremodus</a>
+      </nav>
+    </header>
+
+    <section id="kid-list-section">
+      <div class="fun-banner">Velg barnet ditt og trykk på en oppgave for å tjene ukelønn!</div>
+      <div id="kid-list" class="card-grid"></div>
+    </section>
+
+    <section id="chore-section" class="hidden">
+      <button id="back-button">⬅ Tilbake til barn</button>
+      <div class="fun-banner" id="kid-header"></div>
+      <div id="chore-list"></div>
+    </section>
+  </div>
+
+  <script src="kid.js"></script>
+</body>
+</html>
